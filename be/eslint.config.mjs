@@ -29,9 +29,7 @@ const baseConfig = tseslint.config(
     rules: {
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "warn",
-      '@typescript-eslint/explicit-function-return-type': 'warn',
       '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unsafe-argument': 'error',
       'prefer-const': 'error',
       'no-console': 'warn',
 
@@ -47,11 +45,6 @@ const baseConfig = tseslint.config(
 const testConfig = tseslint.config(
   {
     files: ['**/*.e2e-spec.ts', '**/*.test.ts'],
-    rules: {
-      '@typescript-eslint/no-unsafe-return': 'off',
-      '@typescript-eslint/no-unsafe-call': 'off',
-      '@typescript-eslint/no-unsafe-assignment': 'off'
-    }
   }
 );
 
