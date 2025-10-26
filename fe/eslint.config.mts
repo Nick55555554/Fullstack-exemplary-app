@@ -3,18 +3,30 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
+import eslintPluginImport from 'eslint-plugin-import';
 import {defineConfig} from 'eslint/config';
+
+//TODO: configure lib without styles
+const i18nJsonPlugin = require('eslint-plugin-i18n-json');
 
 export default defineConfig([
     {
         files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-        extends: [js.configs.recommended],
+        extends: [
+            js.configs.recommended,
+            'plugin:react/recommended',
+            'plugin:react-i18next/recommended',
+        ],
         settings: {
             'import/resolver': {
                 alias: {
                     map: [
                         ['@/store', './src/store'],
-                        ['@/pages', './src/pages'],
+                        ['@/todos', './src/units/todos'],
+                        ['@/users', './src/units/users'],
+                        ['@/typings', './src/typings'],
+                        ['@/utils', './src/utils'],
+                        ['@/shared', './src/shared'],
                     ],
                     extensions: ['.ts', '.tsx', '.js', '.jsx'],
                 },
@@ -36,6 +48,7 @@ export default defineConfig([
     {
         plugins: {
             prettier: eslintPluginPrettier,
+            import: eslintPluginImport,
         },
         rules: {
             'prettier/prettier': 'warn',
@@ -47,6 +60,22 @@ export default defineConfig([
             'no-unneeded-ternary': 'warn',
             'no-nested-ternary': 'warn',
             'comma-dangle': ['error', 'never'],
+
+            'import/order': [
+                'warn',
+                {
+                    groups: [
+                        'builtin',
+                        'external',
+                        'internal',
+                        'parent',
+                        'sibling',
+                        'index',
+                    ],
+                    'newlines-between': 'always',
+                    alphabetize: {order: 'asc'},
+                },
+            ],
         },
     },
     {
@@ -59,7 +88,7 @@ export default defineConfig([
             'react-hooks/exhaustive-deps': 'warn',
             'react/jsx-key': 'error',
             'object-curly-spacing': 'off',
-            '@typescript-eslint/object-curly-spacing': 'off',
+            '@typescript-eslint/object-curly-spacing': 'warn',
             'react/jsx-no-useless-fragment': 'warn',
         },
     },
@@ -75,6 +104,19 @@ export default defineConfig([
         rules: {
             'no-console': 'off',
             'no-nested-ternary': 'off',
+        },
+    },
+    {
+        files: ['**/*.json'],
+        plugins: {
+            'i18n-json': i18nJsonPlugin,
+        },
+        rules: {
+            'i18n-json/valid-message-syntax': [2, {syntax: 'icu'}],
+            'i18n-json/valid-json': 2,
+            'i18n-json/sorted-keys': [2, {order: 'asc', indentSpaces: 2}],
+            'i18n-json/identical-keys': 0,
+            'i18n-json/identical-placeholders': 0,
         },
     },
 ]);

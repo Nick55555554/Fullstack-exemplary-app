@@ -6,6 +6,7 @@
         "module": "ESNext",
         "moduleResolution": "node",
         "baseUrl": "./",
+        "resolveJsonModule": true,
         "removeComments": true,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
@@ -21,10 +22,14 @@
         "noUncheckedIndexedAccess": true,
         "skipLibCheck": true,
         "paths": {
-            "@/pages/*": ["src/pages/*"],
-            "@/store/*": ["src/store/*"]
+            "@/todos/*": ["src/units/todos/*"],
+            "@/users/*": ["src/units/users/*"],
+            "@/store/*": ["src/store/*"],
+            "@/typings/*": ["src/typings/*"],
+            "@/utils/*": ["./src/utils/*"],
+            "@/shared/*": ["./src/shared/*"]
         }
     },
     "include": ["src/**/*"],
-    "exclude": ["node_modules", "dist"]
+    "exclude": ["dev/node_modules", "dist"]
 }

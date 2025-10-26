@@ -49,10 +49,10 @@ const cssLoaders = (extra) => {
 }
 
 module.exports = {
-    context: path.resolve(__dirname, 'src'),
+    context: path.resolve(__dirname, '.'),
     mode: isDev ? 'development' : 'production',
     entry: {
-        main: "./main.tsx",
+        main: "./src/main.tsx",
     },
     output: {
         filename: filename('js'),
@@ -62,8 +62,12 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.json', '.ts', '.tsx', '.jsx'],
         alias: {
-            "@/pages": path.resolve(__dirname, 'src/pages'),
-            "@/store": path.resolve(__dirname, "src/store")
+            "@/todos": path.resolve(__dirname, 'src/units/todos'),
+            "@/users": path.resolve(__dirname, 'src/units/users'),
+            "@/store": path.resolve(__dirname, "src/store"),
+            "@/typings": path.resolve(__dirname, "src/typings"),
+            "@/utils": path.resolve(__dirname, "src/utils/"),
+            "@/shared": path.resolve(__dirname, "src/shared/"),
         }
     },
     optimization: optimization(),

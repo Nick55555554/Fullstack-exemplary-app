@@ -24,8 +24,8 @@ export class Todo {
     isActive: boolean;
 
     @CreateDateColumn()
-    updatedAt: string;
+    updatedAt: Date;
 
     @UpdateDateColumn()
-    createdAt: string;
+    createdAt: Date;
 }

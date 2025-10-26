@@ -6,7 +6,7 @@ import {
 } from '@tanstack/react-query';
 import {createAtom, reaction} from 'mobx';
 
-export class MobxQueryy<
+export class MobxQuery<
     TQueryFnData,
     TError,
     TData,

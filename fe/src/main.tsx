@@ -2,6 +2,8 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./entries/App";
 
+import "./locales"
+
 const container = document.getElementById("root");
 const root = createRoot(container!);
 

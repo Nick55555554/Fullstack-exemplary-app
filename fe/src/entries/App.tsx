@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { TodosList } from '@pages/TodosList';
+import { TodosList } from '@/todos/pages/TodosList';
 
 function AppRouter() {
     return (
